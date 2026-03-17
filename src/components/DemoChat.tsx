@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { apiBaseUrl } from "@/lib/publicConfig";
 
 interface Message {
   id: string;
@@ -21,12 +22,17 @@ const starterMessages: Message[] = [
   {
     id: "2",
     sender: "ai",
-    text: "Welcome! I&apos;m here to help. What&apos;s your budget range?",
+    text: "Welcome! I'm here to help. What's your budget range?",
     timestamp: "10:01 AM",
   },
 ];
 
 const quickReplies = ["5 marla price?", "3 bed in Bahria?", "Investment property"];
+
+const createMessageId = () =>
+  typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 export default function DemoChat() {
   const [messages, setMessages] = useState<Message[]>(starterMessages);
@@ -41,44 +47,60 @@ export default function DemoChat() {
   }, [messages, isTyping]);
 
   const handleSend = async (text: string) => {
-    if (!text.trim()) return;
+    const message = text.trim();
+    if (!message || isTyping) return;
 
     const userMsg: Message = {
-      id: Date.now().toString(),
+      id: createMessageId(),
       sender: "user",
-      text,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      text: message,
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
+
+    setMessages((prev) => [...prev, userMsg]);
+    setInputValue("");
     setIsTyping(true);
 
     try {
-      const response = await fetch("http://localhost:8000/demo/chat", {
+      const response = await fetch(`${apiBaseUrl}/demo/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message }),
       });
 
       if (!response.ok) throw new Error("Failed to get response");
 
-      const data = await response.json();
-      
+      const data: {
+        response?: string;
+        lead_score?: number;
+        status?: string;
+      } = await response.json();
+
+      const leadScore =
+        typeof data.lead_score === "number"
+          ? Math.max(0, Math.min(100, data.lead_score))
+          : undefined;
+
       const aiMsg: Message = {
-        id: (Date.now() + 1).toString(),
+        id: createMessageId(),
         sender: "ai",
-        text: data.response,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        score: data.lead_score,
-        status: data.status,
+        text:
+          typeof data.response === "string" && data.response.trim()
+            ? data.response
+            : "Thanks for your message. Our team will follow up shortly.",
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        score: leadScore,
+        status: typeof data.status === "string" ? data.status : "NEW",
       };
 
       setMessages((prev) => [...prev, aiMsg]);
     } catch (error) {
       console.error("Chat Error:", error);
       const errorMsg: Message = {
-        id: Date.now().toString(),
+        id: createMessageId(),
         sender: "ai",
-        text: "Sorry, I&apos;m having trouble connecting to the server. Please make sure the backend is running.",
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        text: "Sorry, I'm having trouble connecting to the server. Please make sure the backend is running.",
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
       setMessages((prev) => [...prev, errorMsg]);
     } finally {
@@ -177,6 +199,7 @@ export default function DemoChat() {
                 <button
                   key={reply}
                   onClick={() => handleSend(reply)}
+                  disabled={isTyping}
                   className="bg-white hover:bg-white/80 border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-full transition-colors shadow-sm"
                 >
                   {reply}
@@ -195,13 +218,14 @@ export default function DemoChat() {
                   className="w-full bg-white border-none rounded-lg px-4 py-2.5 text-sm focus:ring-0 placeholder:text-gray-400 shadow-sm"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && handleSend(inputValue)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSend(inputValue)}
                 />
               </div>
               <button 
                 onClick={() => handleSend(inputValue)}
+                disabled={!inputValue.trim() || isTyping}
                 className={`p-2.5 rounded-full transition-colors ${
-                  inputValue.trim() ? "bg-accent text-white shadow-md" : "text-gray-500"
+                  inputValue.trim() && !isTyping ? "bg-accent text-white shadow-md" : "text-gray-500"
                 }`}
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>

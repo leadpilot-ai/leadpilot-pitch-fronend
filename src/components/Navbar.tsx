@@ -39,7 +39,7 @@ export default function Navbar() {
             Pricing
           </Link>
           <Link
-            href="#demo"
+            href="#bookdemo"
             className="bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-md"
           >
             Book Demo
@@ -92,7 +92,7 @@ export default function Navbar() {
             Pricing
           </Link>
           <Link
-            href="#demo"
+            href="#bookdemo"
             className="bg-accent text-white px-6 py-3 rounded-full font-bold w-[200px] text-center"
             onClick={() => setIsMobileMenuOpen(false)}
           >

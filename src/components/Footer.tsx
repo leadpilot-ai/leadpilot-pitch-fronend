@@ -1,5 +1,7 @@
 "use client";
 
+import { whatsappUrl } from "@/lib/publicConfig";
+
 export default function Footer() {
   return (
     <footer className="py-12 bg-[#0A1628] text-white/60 border-t border-white/10">
@@ -12,7 +14,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             <a 
-              href="https://wa.me/923000000000" 
+              href={whatsappUrl}
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all duration-300 group"

@@ -27,7 +27,7 @@ export default function Hero() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8">
               <Link
-                href="#book-demo"
+                href="#bookdemo"
                 className="bg-accent hover:bg-accent/90 text-primary px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-[0_10px_30px_rgba(37,211,102,0.3)] w-full sm:w-auto text-center"
               >
                 Book a Free Demo
