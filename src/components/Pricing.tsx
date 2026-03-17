@@ -28,7 +28,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id=&apos;pricing&apos; className="py-24 bg-white">
+    <section id="pricing" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Simple, Transparent Pricing</h2>

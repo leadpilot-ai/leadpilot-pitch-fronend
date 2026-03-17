@@ -58,7 +58,7 @@ export default function Hero() {
                   </div>
 
                   {/* Chat Content */}
-                  <div className="flex-1 p-4 flex flex-col gap-4 overflow-y-auto bg-[#e5ddd5]" style={{ backgroundImage: &apos;url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")&apos; }}>
+                  <div className="flex-1 p-4 flex flex-col gap-4 overflow-y-auto bg-[#e5ddd5]" style={{ backgroundImage: 'url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")' }}>
                     {/* User Msg */}
                     <div className="bg-white p-3 rounded-lg rounded-tl-none self-start max-w-[80%] shadow-sm text-sm animate-[slideIn_0.5s_ease-out_forwards]">
                       Aslam o Alaikum! Mujhe property details chahiye

@@ -47,7 +47,7 @@ export default function DemoChat() {
       id: Date.now().toString(),
       sender: "user",
       text,
-        timestamp: new Date().toLocaleTimeString([], { hour: &apos;2-digit&apos;, minute: &apos;2-digit&apos; }),
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     setIsTyping(true);
 
     try {
