@@ -1,45 +1,38 @@
+"use client";
+
+import Link from "next/link";
+
 export default function BookDemo() {
   return (
-    <section id="bookdemo" className="py-24 bg-[#1B4F8A] text-white px-6 relative overflow-hidden">
-      {/* Decorative background circle */}
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    <section id="bookdemo" className="py-24 bg-primary text-white overflow-hidden relative">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
       
-      <div className="container mx-auto max-w-4xl text-center relative z-10">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-          See LeadPilot AI qualify your leads — live.
-        </h2>
-        <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto font-light">
-          Get a personalized walkthrough of how we can automate your real estate sales funnel. 
-          <span className="block mt-2 font-semibold text-accent">20-minute demo. No commitment.</span>
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a
-            href="https://calendly.com/leadpilot/demo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-white text-[#1B4F8A] px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-xl hover:scale-105"
-          >
-            Book a Call
-          </a>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">See LeadPilot AI qualify your leads — live.</h2>
+          <p className="text-xl text-white/70 mb-12">20-minute demo. No commitment. See the future of real estate automation.</p>
           
-          <a
-            href="https://wa.me/923000000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-[#25D366] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#1ebe57] transition-all shadow-xl flex items-center justify-center gap-3 hover:scale-105"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.893 3.135 1.364 4.795 1.366 5.203.001 9.44-4.236 9.443-9.44.002-2.522-.981-4.893-2.767-6.68-1.789-1.786-4.162-2.769-6.685-2.771-5.204 0-9.441 4.237-9.443 9.44-.001 1.674.444 3.308 1.288 4.745L2.09 21.25l6.566-1.085zM16.3 14.316c-.327-.164-1.93-0.953-2.229-1.063-.3-.11-.518-.164-.736.164-.218.327-.845 1.063-1.036 1.281-.19.218-.381.245-.709.081-.327-.164-1.38-.508-2.53-1.536-.895-.8-1.498-1.786-1.675-2.085-.177-.3-.019-.462.144-.624.146-.147.327-.381.491-.572.164-.19.218-.327.327-.545.109-.218.055-.409-.027-.572-.082-.164-.736-1.772-1.008-2.427-.265-.638-.535-.551-.736-.561l-.627-.012c-.218 0-.572.081-.872.409-.3.327-1.145 1.118-1.145 2.727s1.172 3.163 1.336 3.381c.164.218 2.306 3.52 5.586 4.933.78.337 1.39.539 1.86.688.783.248 1.497.213 2.06.13.627-.094 1.93-.79 2.201-1.554.272-.764.272-1.418.19-1.554-.081-.137-.3-.218-.627-.382z" />
-            </svg>
-            Chat on WhatsApp
-          </a>
-        </div>
-        
-        <div className="mt-16 flex items-center justify-center gap-12 opacity-50 text-xs tracking-widest uppercase font-bold">
-          <span>Secure</span>
-          <span>Scalable</span>
-          <span>urdu support</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              href="https://calendly.com/leadpilot/demo"
+              target="_blank"
+              className="bg-white text-primary hover:bg-gray-100 px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-xl w-full sm:w-auto"
+            >
+              Book a Call
+            </Link>
+            
+            <Link
+              href="https://wa.me/923000000000"
+              target="_blank"
+              className="bg-accent text-white hover:bg-accent/90 px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105 shadow-[0_10px_30px_rgba(37,211,102,0.3)] flex items-center justify-center gap-3 w-full sm:w-auto"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.284l-.569 2.112 2.141-.557c.908.52 1.964.887 3.177.887 3.036 0 5.766-2.613 5.766-5.767s-2.73-5.725-5.766-5.725zm3.61 8.211c-.139.393-.803.707-1.111.748-.309.041-.659.062-2.126-.531-1.741-.699-2.859-2.47-2.946-2.586-.086-.115-.701-.932-.701-1.774s.432-1.258.587-1.423c.155-.165.339-.206.453-.206s.227.001.326.005c.101.004.238-.038.373.284.139.33.475 1.155.516 1.237.041.082.068.178.012.289-.056.111-.082.178-.165.273s-.165.165-.25.263c-.114.131-.227.247-.118.432.11.185.485.801 1.042 1.297.712.637 1.343.834 1.545.922.185.082.289.056.402-.056.111-.111.475-.544.606-.723s.26-.155.432-.09c.174.066 1.1.516 1.288.618.188.101.314.155.36.236.046.082.046.474-.093.867zM12.001 2c-5.523 0-10 4.477-10 10 0 1.956.562 3.782 1.528 5.326l-1.528 5.674 5.823-1.526c1.512.915 3.279 1.452 5.177 1.452 5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.154c-1.637 0-3.15-.461-4.428-1.259l-.317-.2-.338.088-1.693.444.453-1.684.1-.373-.243-.393c-.803-1.302-1.234-2.793-1.234-4.28 0-4.496 3.659-8.154 8.154-8.154 4.496 0 8.154 3.658 8.154 8.154-.001 4.496-3.66 8.154-8.154 8.154z" />
+              </svg>
+              Chat on WhatsApp
+            </Link>
+          </div>
         </div>
       </div>
     </section>

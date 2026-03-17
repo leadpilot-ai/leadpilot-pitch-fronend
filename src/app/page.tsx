@@ -1,11 +1,23 @@
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Problem from "@/components/Problem";
+import HowItWorks from "@/components/HowItWorks";
+import DemoChat from "@/components/DemoChat";
+import Pricing from "@/components/Pricing";
+import BookDemo from "@/components/BookDemo";
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-primary mb-4">LeadPilot Pitch</h1>
-        <p className="text-lg text-foreground/80 mb-8">Frontend Scaffolding Complete</p>
-        <div className="w-16 h-1 bg-accent mx-auto rounded-full"></div>
-      </div>
+    <main className="min-h-screen bg-primary">
+      <Navbar />
+      <Hero />
+      <Problem />
+      <HowItWorks />
+      <DemoChat />
+      <Pricing />
+      <BookDemo />
+      <Footer />
     </main>
   );
 }

@@ -18,7 +18,7 @@ const problems = [
 ];
 
 export default function Problem() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,30 +40,22 @@ export default function Problem() {
   }, []);
 
   return (
-    <section 
-      id="problem"
-      ref={sectionRef}
-      className="bg-[#0F1E35] text-white py-24 px-6 overflow-hidden"
-    >
-      <div className="container mx-auto">
+    <section id="problem" className="py-24 bg-[#0F1E35] text-white overflow-hidden">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">The Real Estate Bottleneck</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Scaling your sales team is impossible when they are buried in low-quality leads.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">The Real Estate Nightmare</h2>
+          <p className="text-white/60 max-w-2xl mx-auto">Manual lead qualification is killing your conversion rates and exhausting your team.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {problems.map((problem, index) => (
+        <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {problems.map((item, index) => (
             <div
               key={index}
-              className="problem-card opacity-0 translate-y-10 transition-all duration-700 ease-out bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 hover:border-accent/30 group"
+              className="problem-card opacity-0 translate-y-10 transition-all duration-700 ease-out bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm"
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                {problem.icon}
-              </div>
-              <p className="text-xl font-medium leading-relaxed">
-                {problem.text}
-              </p>
+              <div className="text-4xl mb-6">{item.icon}</div>
+              <p className="text-xl font-medium leading-relaxed">{item.text}</p>
             </div>
           ))}
         </div>
