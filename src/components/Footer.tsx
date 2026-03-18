@@ -4,11 +4,13 @@ import { whatsappUrl } from "@/lib/publicConfig";
 
 export default function Footer() {
   return (
-    <footer className="py-12 bg-[#0A1628] text-white/60 border-t border-white/10">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-primary py-12 text-white/70">
+      <div className="absolute left-1/2 top-0 h-24 w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-3xl"></div>
+
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-8 shadow-[0_18px_45px_-28px_rgba(0,0,0,0.6)] backdrop-blur-sm md:flex-row md:px-10">
           <div className="text-center md:text-left">
-            <h3 className="text-white font-bold text-xl mb-2">LeadPilot AI</h3>
+            <h3 className="mb-2 text-xl font-bold text-white">LeadPilot AI</h3>
             <p className="text-sm">© 2026 LeadPilot AI. Built for Pakistani SMEs.</p>
           </div>
 
@@ -17,7 +19,7 @@ export default function Footer() {
               href={whatsappUrl}
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all duration-300 group"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent hover:text-primary hover:shadow-md"
               aria-label="WhatsApp"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -28,7 +30,7 @@ export default function Footer() {
               href="https://linkedin.com/company/leadpilot-ai" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#0077b5] hover:text-white transition-all duration-300"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15 hover:text-white hover:shadow-md"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">

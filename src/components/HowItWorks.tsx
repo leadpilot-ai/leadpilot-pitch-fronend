@@ -32,37 +32,40 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Three simple steps to transform your WhatsApp lead management.</p>
+    <section id="how-it-works" className="section-shell bg-slate-50">
+      <div className="section-container">
+        <div className="mb-20 text-center">
+          <h2 className="section-title mb-4 text-gray-900">How It Works</h2>
+          <p className="section-subtitle text-gray-600">Three simple steps to transform your WhatsApp lead management.</p>
         </div>
 
         <div className="relative">
           {/* Dotted Line (Desktop Only) */}
-          <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] border-t-2 border-dotted border-gray-200 -z-10"></div>
+          <div className="absolute left-[15%] right-[15%] top-[60px] -z-10 hidden border-t-2 border-dashed border-gray-300/80 lg:block"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10">
             {steps.map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center group">
+              <div
+                key={index}
+                className="group flex flex-col items-center rounded-3xl border border-slate-200/90 bg-white/85 p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+              >
                 {/* Step Number & Icon */}
                 <div className="relative mb-8">
-                  <div className="w-20 h-20 bg-white border-2 border-primary rounded-full flex items-center justify-center text-primary transition-transform group-hover:scale-110 shadow-sm relative z-10">
+                  <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl border border-primary/20 bg-primary text-white shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg">
                     {step.icon}
                   </div>
-                  <div className="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md z-20">
+                  <div className="absolute -right-4 -top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-accent text-lg font-bold text-primary shadow-md">
                     {index + 1}
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed max-w-xs">{step.description}</p>
+                <h3 className="mb-4 text-xl font-bold text-gray-900">{step.title}</h3>
+                <p className="max-w-xs leading-relaxed text-gray-600">{step.description}</p>
                 
                 {/* Mobile Connector */}
                 {index < steps.length - 1 && (
-                  <div className="lg:hidden w-px h-12 border-l-2 border-dotted border-gray-300 my-4"></div>
+                  <div className="my-4 h-12 w-px border-l-2 border-dashed border-gray-300 lg:hidden"></div>
                 )}
               </div>
             ))}

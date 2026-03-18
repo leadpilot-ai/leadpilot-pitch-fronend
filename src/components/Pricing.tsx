@@ -28,32 +28,32 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">Simple, Transparent Pricing</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Choose the plan that fits your business needs.</p>
+    <section id="pricing" className="section-shell bg-slate-50">
+      <div className="section-container">
+        <div className="mb-16 text-center">
+          <h2 className="section-title mb-4 text-gray-900">Simple, Transparent Pricing</h2>
+          <p className="section-subtitle text-gray-600">Choose the plan that fits your business needs.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative p-8 rounded-2xl border transition-all duration-300 hover:shadow-xl flex flex-col ${
+              className={`relative flex flex-col rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                 plan.highlight
-                  ? "border-accent ring-4 ring-accent/10 shadow-lg scale-105 z-10"
-                  : "border-gray-200"
+                  ? "z-10 scale-[1.02] border-accent bg-white ring-4 ring-accent/10 shadow-xl"
+                  : "border-slate-200/90 bg-white/85 shadow-sm hover:border-primary/20"
               }`}
             >
               {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold shadow-md">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full border border-accent/30 bg-accent px-4 py-1 text-sm font-bold text-primary shadow-md">
                   MOST POPULAR
                 </div>
               )}
 
               <div className="mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <p className="text-gray-500 text-sm">{plan.description}</p>
+                <h3 className="mb-2 text-2xl font-bold text-gray-900">{plan.name}</h3>
+                <p className="text-sm text-gray-500">{plan.description}</p>
               </div>
 
               <div className="mb-8">
@@ -61,7 +61,7 @@ export default function Pricing() {
                 <span className="text-gray-500">/month</span>
               </div>
 
-              <ul className="space-y-4 mb-10 flex-1">
+              <ul className="mb-10 flex-1 space-y-4">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3 text-gray-600">
                     <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,10 +74,10 @@ export default function Pricing() {
 
               <Link
                 href="#bookdemo"
-                className={`w-full py-4 rounded-xl font-bold text-center transition-all ${
+                className={`w-full rounded-2xl py-4 text-center font-bold shadow-sm transition-all duration-300 hover:-translate-y-0.5 ${
                   plan.highlight
-                    ? "bg-accent text-white hover:bg-accent/90 shadow-[0_10px_20px_rgba(37,211,102,0.2)]"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                    ? "border border-accent/30 bg-accent text-primary hover:bg-accent/90"
+                    : "border border-slate-200 bg-slate-100 text-gray-900 hover:bg-slate-200"
                 }`}
               >
                 Get Started
